@@ -60,6 +60,7 @@ def get_project_by_title(title):
     db_cursor = db.session.execute(QUERY, {'title': title})
     row = db_cursor.fetchone()
     print "Title: %s\nDescription: %s\nMax Grade: %d" % (row[0], row[1], row[2])
+
     return row
 
 
@@ -73,7 +74,7 @@ def get_all_projects():
 
     db_cursor = db.session.execute(QUERY)
     rows = db_cursor.fetchall()
-    print rows
+
     return rows
 
 
@@ -90,6 +91,7 @@ def get_grade_by_github_title(github, title):
     row = db_cursor.fetchone()
     print "Student %s in project %s received grade of %s" % (
         github, title, row[0])
+ 
     return row
 
 
