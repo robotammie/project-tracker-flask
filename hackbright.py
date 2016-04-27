@@ -63,6 +63,20 @@ def get_project_by_title(title):
     return row
 
 
+def get_all_projects():
+    """Return all project info."""
+
+    QUERY = """
+        SELECT *
+        FROM projects
+        """
+
+    db_cursor = db.session.execute(QUERY)
+    rows = db_cursor.fetchall()
+    print rows
+    return rows
+
+
 def get_grade_by_github_title(github, title):
     """Print grade student received for a project."""
 

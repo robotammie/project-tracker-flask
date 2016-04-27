@@ -12,7 +12,7 @@
     <h4>Grade Summary:</h4>
     <ul>
     {% for project, grade in all_grades %}
-        <li>{{ project }}: {{ grade }}</li>
+        <li><a href="/project?name={{ project }}">{{ project }}</a>: {{ grade }}</li>
     {% endfor %}
     </ul>
 

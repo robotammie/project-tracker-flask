@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Project Info{% endblock %}
+
+{% block content %}
+
+<form action="/project">
+    <label>Choose a Project
+        <select name="name">
+            {% for id, title, description, max_grade in projects %}
+
+            <option value ="{{ title }}">{{ title }}</option>
+
+            {% endfor %}
+        </select>
+    </label>
+    <br>
+    <br>
+
+    <input type="submit" value="Display Project Info">
+</form>
+
+{% endblock %}
