@@ -39,11 +39,15 @@ def get_student():
     # unpack tuple
     first, last, github = hackbright.get_student_by_github(github)
     
+    # list of tuples (project, grade)
+    all_grades = hackbright.get_grades_by_github(github)
+
     # render student info page
     html = render_template("student_info.html",
                            first=first,
                            last=last,
-                           github=github)
+                           github=github,
+                           all_grades=all_grades)
     return html
 
 @app.route("/student-search")
