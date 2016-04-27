@@ -15,22 +15,31 @@ def get_new_student_form():
 def add_student():
   """Add student to database and display confirmation"""
 
+  # get student data from form
   first_name = request.form.get('fname')
   last_name = request.form.get('lname')
   github = request.form.get('github')
 
+  # insert student info into table
   hackbright.make_new_student(first_name, last_name, github)
 
+  # render confirmation page (with link to student page)
   return render_template("new_student.html",
                          first=first_name,
-                         last=last_name)
+                         last=last_name,
+                         github=github)
 
 @app.route("/student")
 def get_student():
     """Show information about a student."""
 
+    # run select statement, bind 'github' to resulting tuple
     github = request.args.get('github', 'jhacks')
+
+    # unpack tuple
     first, last, github = hackbright.get_student_by_github(github)
+    
+    # render student info page
     html = render_template("student_info.html",
                            first=first,
                            last=last,
